@@ -1,0 +1,34 @@
+﻿  main.cpp
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(130,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(130,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(137,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(137,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(144,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(144,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(151,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(151,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(197,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(197,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(202,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(202,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(207,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(207,51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(212,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(212,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(217,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(217,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(222,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(222,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(223,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(223,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(224,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(224,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(225,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(225,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(229,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(229,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(232,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(232,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(245,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\rrstu\source\repos\Snake\Snake\main.cpp(245,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Snake.vcxproj -> C:\Users\rrstu\source\repos\Snake\Debug\Snake.exe
