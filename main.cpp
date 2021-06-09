@@ -38,7 +38,7 @@ void Restart()
     f.y = rand() % M;
 }
 
-void gameTick()
+void gameTick(Text &score_string)
 {
     for (int i = snake_lenght; i > 0; i--)
     {
@@ -79,11 +79,12 @@ void gameTick()
                 f_onSnake = false;
         }
     }
+    score_string.setString(std::to_string(score));
 }
 
 int main()
 {
-    RenderWindow window(VideoMode(width, height), "Snake!");
+    RenderWindow window(VideoMode(width, height), "Snake");
     window.setFramerateLimit(10);
 
     Texture bg_texture, snake_texture;
@@ -184,8 +185,7 @@ int main()
                 strcpy_s(direction, "Left");
         }
 
-        gameTick();
-        score_string.setString(std::to_string(score));
+        gameTick(score_string);
 
         window.clear();
 
