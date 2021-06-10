@@ -11,7 +11,7 @@ int N = 30, M = 20;
 int sprite_size = 32;
 int width = sprite_size * N;
 int height = sprite_size * (M + 1);
-bool isAlive = true;
+bool isAlive = true, frame_direction = false;
 int score = 0, max_score = 0;
 
 char direction[10] = "Right";
@@ -19,7 +19,7 @@ int snake_lenght = 4;
 struct snake
 {
     int x, y;
-} s[200];
+} s[500];
 
 struct fruit
 {
@@ -29,16 +29,19 @@ struct fruit
 void Restart()
 {
     isAlive = true;
+    for (int i = 0; i < snake_lenght; i++)
+    {
+        s[i].x = 0; s[i].y = 0;
+    }
     snake_lenght = 4;
     score = 0;
 
-    s[0].x = 0; s[0].y = 0;
     strcpy_s(direction, "Right");
     f.x = rand() % N;
     f.y = rand() % M;
 }
 
-void gameTick(Text &score_string)
+void GameTick(Text &score_string)
 {
     for (int i = snake_lenght; i > 0; i--)
     {
@@ -68,7 +71,7 @@ void gameTick(Text &score_string)
         while (f_onSnake == true)
         {
             bool f_found = false;
-            for (int i = 1; i < snake_lenght; i++)
+            for (int i = 0; i < snake_lenght; i++)
                 if (f.x == s[i].x && f.y == s[i].y)
                 {
                     f_found = true; i = snake_lenght;
@@ -80,11 +83,13 @@ void gameTick(Text &score_string)
         }
     }
     score_string.setString(std::to_string(score));
+    frame_direction = false;
+
 }
 
 int main()
 {
-    RenderWindow window(VideoMode(width, height), "Snake");
+    RenderWindow window(VideoMode(width, height), "Snake", Style::Titlebar | Style::Close);
     window.setFramerateLimit(10);
 
     Texture bg_texture, snake_texture;
@@ -162,30 +167,42 @@ int main()
         {
             if (event.type == Event::Closed || Keyboard::isKeyPressed(Keyboard::Escape))
                 window.close();
+
+            if ((event.type == Event::KeyPressed) && ((event.key.code == Keyboard::W) || (event.key.code == Keyboard::Up)))
+            {
+                if (!strstr(direction, "Down") && frame_direction == false)
+                {
+                    strcpy_s(direction, "Up");
+                    frame_direction = true;
+                }
+            }
+            if ((event.type == Event::KeyPressed) && ((event.key.code == Keyboard::S) || (event.key.code == Keyboard::Down)))
+            {
+                if (!strstr(direction, "Up") && frame_direction == false)
+                {
+                    strcpy_s(direction, "Down");
+                    frame_direction = true;
+                }
+            }
+            if ((event.type == Event::KeyPressed) && ((event.key.code == Keyboard::D) || (event.key.code == Keyboard::Right)))
+            {
+                if (!strstr(direction, "Left") && frame_direction == false)
+                {
+                    strcpy_s(direction, "Right");
+                    frame_direction = true;
+                }
+            }
+            if ((event.type == Event::KeyPressed) && ((event.key.code == Keyboard::A) || (event.key.code == Keyboard::Left)))
+            {
+                if (!strstr(direction, "Right") && frame_direction == false)
+                {
+                    strcpy_s(direction, "Left");
+                    frame_direction = true;
+                }
+            }
         }
 
-        if (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W))
-        {
-            if (!strstr(direction, "Down"))
-                strcpy_s(direction, "Up");
-        }
-        if (Keyboard::isKeyPressed(Keyboard::Down) || Keyboard::isKeyPressed(Keyboard::S))
-        {
-            if (!strstr(direction, "Up"))
-                strcpy_s(direction, "Down");
-        }
-        if (Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D))
-        {
-            if (!strstr(direction, "Left"))
-                strcpy_s(direction, "Right");
-        }
-        if (Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A))
-        {
-            if (!strstr(direction, "Right"))
-                strcpy_s(direction, "Left");
-        }
-
-        gameTick(score_string);
+        GameTick(score_string);
 
         window.clear();
 
@@ -252,4 +269,4 @@ int main()
         window.display();
     }
     return 0;
-}
+} 
