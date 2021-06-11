@@ -4,7 +4,9 @@
 #include <time.h>
 #include <windows.h>
 #include <string>
+#include <fstream>
 
+using namespace std;
 using namespace sf;
 
 int N = 30, M = 20;
@@ -28,6 +30,7 @@ struct fruit
 
 void Restart()
 {
+    Sleep(500);
     isAlive = true;
     for (int i = 0; i < snake_lenght; i++)
     {
@@ -84,7 +87,6 @@ void GameTick(Text &score_string)
     }
     score_string.setString(std::to_string(score));
     frame_direction = false;
-
 }
 
 int main()
@@ -92,12 +94,14 @@ int main()
     RenderWindow window(VideoMode(width, height), "Snake", Style::Titlebar | Style::Close);
     window.setFramerateLimit(10);
 
-    Texture bg_texture, snake_texture;
+    Texture bg_texture, snake_texture, snake_head;
     bg_texture.loadFromFile("images/snake_bg.png");
-    snake_texture.loadFromFile("images/snake_sn.png");
+    snake_texture.loadFromFile("images/snake_body.png");
+    snake_head.loadFromFile("images/snake_head.png");
 
     Sprite bg_sprite(bg_texture);
     Sprite snake_sprite(snake_texture);
+    Sprite head_sprite(snake_head);
 
     Texture edge_top_texture, edge_right_texture, edge_bottom_texture, edge_left_texture;
     edge_top_texture.loadFromFile("images/Up.png"); edge_right_texture.loadFromFile("images/Right.png");
@@ -142,6 +146,10 @@ int main()
     score_string.setFillColor(Color(124, 25, 35));
     score_string.setPosition(5 * sprite_size, M * sprite_size - 5);
 
+    ifstream hs_in("highscore.txt");
+    ofstream hs_out;
+    hs_in >> max_score;
+
     Text max_score_text;
     max_score_text.setFont(SigmarOne);
     max_score_text.setString("Highscore: ");
@@ -167,7 +175,15 @@ int main()
         {
             if (event.type == Event::Closed || Keyboard::isKeyPressed(Keyboard::Escape))
                 window.close();
-
+            
+            if ((event.type == Event::KeyPressed) && ((event.key.code == Keyboard::R)))
+            {
+                hs_out.open("highscore.txt"); 
+                hs_out << 0; 
+                hs_out.close();
+                max_score = 0;
+                max_score_string.setString(std::to_string(max_score));
+            }
             if ((event.type == Event::KeyPressed) && ((event.key.code == Keyboard::W) || (event.key.code == Keyboard::Up)))
             {
                 if (!strstr(direction, "Down") && frame_direction == false)
@@ -241,7 +257,9 @@ int main()
         corner_bl_sprite.setPosition(0 * sprite_size, (M - 1) * sprite_size); window.draw(corner_bl_sprite);
         corner_br_sprite.setPosition((N - 1) * sprite_size, (M - 1) * sprite_size); window.draw(corner_br_sprite);
 
-        for (int i = 0; i < snake_lenght; i++)
+        head_sprite.setPosition(s[0].x * sprite_size, s[0].y * sprite_size);
+        window.draw(head_sprite);
+        for (int i = 1; i < snake_lenght; i++)
         {
             snake_sprite.setPosition(s[i].x * sprite_size, s[i].y * sprite_size);
             window.draw(snake_sprite);
@@ -257,12 +275,18 @@ int main()
         if (!isAlive)
         {
             if (score > max_score)
+            {
                 max_score = score;
+                hs_out.open("highscore.txt"); 
+                hs_out << max_score; 
+                hs_out.close();
+            }
             max_score_string.setString(std::to_string(max_score));
+            
             collision_sprite.setPosition(s[0].x * sprite_size, s[0].y * sprite_size);         
             window.draw(collision_sprite);
             window.display();
-            Sleep(500);
+
             Restart();
         }
         
