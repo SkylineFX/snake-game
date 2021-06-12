@@ -121,27 +121,22 @@ int main()
     Sprite corner_bl_sprite(corner_bl_texture);
     Sprite corner_br_sprite(corner_br_texture);
 
-    Texture fruit_texture;
+    Texture fruit_texture, collision_texture;
     fruit_texture.loadFromFile("images/Fruit.png");
-    Sprite fruit_sprite(fruit_texture);
-
-    Texture collision_texture;
     collision_texture.loadFromFile("images/collision.png");
+    
+    Sprite fruit_sprite(fruit_texture);
     Sprite collision_sprite(collision_texture);
 
     Font SigmarOne;
-    SigmarOne.loadFromFile("SigmarOne-Regular.ttf");
+    SigmarOne.loadFromFile("fonts/SigmarOne-Regular.ttf");
 
-    Text score_text;
-    score_text.setFont(SigmarOne);
-    score_text.setString("Score: ");
+    Text score_text("Score: ", SigmarOne);
     score_text.setCharacterSize(32);
     score_text.setFillColor(Color(124, 25, 35));
     score_text.setPosition(1 * sprite_size, M * sprite_size - 5);
 
-    Text score_string;
-    score_string.setFont(SigmarOne);
-    score_string.setString(std::to_string(score));
+    Text score_string(to_string(score), SigmarOne);
     score_string.setCharacterSize(32);
     score_string.setFillColor(Color(124, 25, 35));
     score_string.setPosition(5 * sprite_size, M * sprite_size - 5);
@@ -150,16 +145,12 @@ int main()
     ofstream hs_out;
     hs_in >> max_score;
 
-    Text max_score_text;
-    max_score_text.setFont(SigmarOne);
-    max_score_text.setString("Highscore: ");
+    Text max_score_text("Highscore: ", SigmarOne);
     max_score_text.setCharacterSize(32);
     max_score_text.setFillColor(Color(124, 25, 35));
     max_score_text.setPosition((N - 9) * sprite_size, M * sprite_size - 5);
 
-    Text max_score_string;
-    max_score_string.setFont(SigmarOne);
-    max_score_string.setString(std::to_string(max_score));
+    Text max_score_string(to_string(max_score), SigmarOne);
     max_score_string.setCharacterSize(32);
     max_score_string.setFillColor(Color(124, 25, 35));
     max_score_string.setPosition((N - 2) * sprite_size, M * sprite_size - 5);
